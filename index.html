@@ -26,23 +26,24 @@
 
         .bubble {
             position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: rgba(255, 255, 255, 0.5);
+            width: 25px;
+            height: 25px;
+            background: radial-gradient(circle, rgba(255, 255, 255, 0.8) 10%, rgba(255, 255, 255, 0.3) 60%, rgba(255, 255, 255, 0) 100%);
             border-radius: 50%;
-            animation: float 10s infinite ease-in-out;
+            animation: float 12s infinite ease-in-out;
+            filter: blur(2px);
         }
 
         @keyframes float {
             0% {
-                transform: translateY(100vh) translateX(0);
+                transform: translateY(100vh) translateX(0) scale(0.8);
                 opacity: 0;
             }
             50% {
                 opacity: 1;
             }
             100% {
-                transform: translateY(-10vh) translateX(calc(100vw * var(--random-x)));
+                transform: translateY(-10vh) translateX(calc(100vw * var(--random-x))) scale(1.2);
                 opacity: 0;
             }
         }
@@ -53,11 +54,11 @@
 
     <script>
         const container = document.querySelector('.container');
-        for (let i = 0; i < 30; i++) {
+        for (let i = 0; i < 40; i++) {
             let bubble = document.createElement('div');
             bubble.classList.add('bubble');
             bubble.style.left = Math.random() * 100 + 'vw';
-            bubble.style.animationDuration = 8 + Math.random() * 5 + 's';
+            bubble.style.animationDuration = 10 + Math.random() * 6 + 's';
             bubble.style.setProperty('--random-x', Math.random() * 0.2 - 0.1);
             container.appendChild(bubble);
         }
